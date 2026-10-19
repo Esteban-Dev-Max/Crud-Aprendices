@@ -2,13 +2,20 @@
   "name": "crud_aprendices",
   "version": "1.0.0",
   "description": "CRUD de aprendices con Express",
-  "main": "app.js",
+  "main": "src/server.js",
   "scripts": {
-<<<<<<< HEAD
+    "start": "node src/server.js",
     "dev": "node --watch src/server.js",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
+    "@prisma/adapter-pg": "^7.10.0",
+    "@prisma/client": "^7.10.0",
     "bcryptjs": "^3.0.3",
     "dotenv": "^17.4.2",
     "express": "^5.1.0",
@@ -16,18 +23,7 @@
     "multer": "^2.3.0"
   },
   "devDependencies": {
-    "@prisma/adapter-pg": "^7.10.0",
-    "@prisma/client": "^7.10.0",
     "prisma": "^7.10.0",
     "tsx": "^4.23.15"
-=======
-    "start": "node app.js",
-    "dev": "node --watch app.js"
-  },
-  "dependencies": {
-    "dotenv": "^17.4.2",
-    "express": "^5.1.0",
-    "multer": "^2.2.0"
->>>>>>> c3e725876a083a659292ed6e4c47402e17a44c44
   }
 }
