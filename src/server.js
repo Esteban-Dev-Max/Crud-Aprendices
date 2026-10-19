@@ -1,18 +1,22 @@
-require("dotenv").config({ quiet: true })
+require('dotenv').config();
+const express = require('express');
+const pool = require('./config/db');
 
-const app = require("./app")
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-const PUERTO = Number(process.env.PORT || process.env.PUERTO || 3000)
+app.use(express.json());
 
-const servidor = app.listen(PUERTO, () => {
-    console.log(`Servidor Express: http://localhost:${PUERTO}`)
-    console.log(`Estado de la API: http://localhost:${PUERTO}/api/status`)
-})
+// Probar consulta simple a la BD
+app.get('/test-db', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT NOW()');
+    res.json({ status: 'ok', time: result.rows[0].now });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
-const cerrar = (senal) => {
-    console.log(`\n${senal} recibido. Cerrando servidor...`)
-    servidor.close(() => process.exit(0))
-}
-
-process.on("SIGINT", () => cerrar("SIGINT"))
-process.on("SIGTERM", () => cerrar("SIGTERM"))
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
+});
