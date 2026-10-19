@@ -733,4 +733,5 @@ node_modules/
 .env
 npm-debug.log*
 
-Así Git sabe qué cosas debe ignorar.
+Así Git sabe qué cosas debe ignorar.#   C r u d - A p r e n d i c e s  
+ 
